@@ -4,7 +4,7 @@ import android.content.Context;
 
 /**
  * 作者：王兵洋  2017/9/4 09:15
- * 类的用途：
+ * 类的用途：px/dpi/dp之间的转换工具类，保证尺寸大小不变
  */
 public class Utils {
     /**

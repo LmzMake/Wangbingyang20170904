@@ -3,17 +3,30 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.bwie.wangbingyang20170904.CircleNumberProgress
-        android:id="@+id/cnp_citcleNumberProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:layout_margin="20dp"
-        android:background="#33897500"/>
 
     <Button
         android:id="@+id/btn_numberProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="改变颜色"/>
+
+    <Button
+        android:id="@+id/jiasu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加速"/>
+
+    <Button
+        android:id="@+id/jiansu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="减速"/>
+
+    <com.bwie.wangbingyang20170904.CircleNumberProgress
+        android:id="@+id/cnp_citcleNumberProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_margin="20dp"
+        android:background="#33897500"/>
 
 </LinearLayout>

@@ -12,7 +12,7 @@ import android.view.View;
 
 /**
  * 作者：王兵洋  2017/9/4 09:11
- * 类的用途：
+ * 类的用途：自定义view实现圆环计时器的效果
  */
 public class CircleNumberProgress extends View {
 
