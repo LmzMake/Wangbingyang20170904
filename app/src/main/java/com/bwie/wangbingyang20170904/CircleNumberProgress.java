@@ -18,7 +18,7 @@ import android.view.View;
 public class CircleNumberProgress extends View {
 
     /** 进度条画笔的宽度（dp） */
-    private int paintProgressWidth = 1;
+    private int paintProgressWidth = 3;
 
     /** 文字百分比的字体大小（sp） */
     private int paintTextSize = 25;

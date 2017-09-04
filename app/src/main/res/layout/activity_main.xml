@@ -25,7 +25,7 @@
     <com.bwie.wangbingyang20170904.CircleNumberProgress
         android:id="@+id/cnp_citcleNumberProgress"
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:layout_margin="20dp"/>
 
 </LinearLayout>

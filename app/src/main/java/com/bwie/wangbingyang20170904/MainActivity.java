@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,20 +28,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mBtnNumberProgressBar;
     private Button mJiasu;
     private Button mJiansu;
-    int nub = 1;
+    private int nub = 1;
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             progress++;
-            cnp_citcleNumberProgress.setProgress(progress);
+            mCnpCitcleNumberProgress.setProgress(progress);
             /*设置加速减速的效果*/
             if (nub == 1) {//nub==1 匀速
-                handler.sendEmptyMessageDelayed(WHAT_INCREASE, getRadomNumber(50, 300));
+                handler.sendEmptyMessageDelayed(WHAT_INCREASE, getRadomNumber(50, 100));
             }
-            if (nub == 2) {//nub==2 减速
+            if (nub == 2) {//nub==2 加速
+                handler.sendEmptyMessageDelayed(WHAT_INCREASE, getRadomNumber(50, 0));
+            }
+            if (nub == 3) {//nub==3 减速
                 handler.sendEmptyMessageDelayed(WHAT_INCREASE, getRadomNumber(50, 1500));
-            }
-            if (nub == 3) {//nub==3 加速
-                handler.sendEmptyMessageDelayed(WHAT_INCREASE, getRadomNumber(50, 10));
             }
             if (progress >= 100) {
                 handler.removeMessages(WHAT_INCREASE);
@@ -52,9 +53,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
-        cnp_citcleNumberProgress = (CircleNumberProgress) findViewById(R.id.cnp_citcleNumberProgress);
-        Button btn_numberProgressBar = (Button) findViewById(R.id.btn_numberProgressBar);
+        /*初始化数据*/
+        mCnpCitcleNumberProgress = (CircleNumberProgress) findViewById(R.id.cnp_citcleNumberProgress);
+        mBtnNumberProgressBar = (Button) findViewById(R.id.btn_numberProgressBar);
+        mJiasu = (Button) findViewById(R.id.jiasu);
+        mJiansu = (Button) findViewById(R.id.jiansu);
+        mBtnNumberProgressBar.setOnClickListener(this);
+        mJiasu.setOnClickListener(this);
+        mJiansu.setOnClickListener(this);
     }
 
     private void increase() {
@@ -74,16 +80,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return (int) (start + Math.random() * (end - start));
     }
 
-    private void initView() {
-        mCnpCitcleNumberProgress = (CircleNumberProgress) findViewById(R.id.cnp_citcleNumberProgress);
-        mBtnNumberProgressBar = (Button) findViewById(R.id.btn_numberProgressBar);
-        mJiasu = (Button) findViewById(R.id.jiasu);
-        mJiansu = (Button) findViewById(R.id.jiansu);
-        mBtnNumberProgressBar.setOnClickListener(this);
-        mJiasu.setOnClickListener(this);
-        mJiansu.setOnClickListener(this);
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -92,10 +88,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 nub = 1;
                 break;
             case R.id.jiasu:
-                nub = 3;
+                nub = 2;
+                Toast.makeText(MainActivity.this, "快如闪电了", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.jiansu:
-                nub = 2;
+                nub = 3;
+                Toast.makeText(MainActivity.this, "不能再慢了", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
