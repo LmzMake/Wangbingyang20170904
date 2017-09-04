@@ -2,6 +2,7 @@ package com.bwie.wangbingyang20170904;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
@@ -12,7 +13,7 @@ import android.view.View;
 
 /**
  * 作者：王兵洋  2017/9/4 09:11
- * 类的用途：自定义view实现圆环计时器的效果
+ * 类的用途：z
  */
 public class CircleNumberProgress extends View {
 
@@ -20,7 +21,7 @@ public class CircleNumberProgress extends View {
     private int paintProgressWidth = 1;
 
     /** 文字百分比的字体大小（sp） */
-    private int paintTextSize = 30;
+    private int paintTextSize = 25;
 
     /** 未完成进度条的颜色 */
     private int paintUndoneColor = 0xffaaaaaa;
@@ -29,7 +30,7 @@ public class CircleNumberProgress extends View {
     private int paintDoneColor = 0xff67aae4;
 
     /** 百分比文字的颜色 */
-    private int paintTextColor = 0xffff0077;
+//    private int paintTextColor = 0xffff0077;
 
     /** 设置进度条画笔的宽度(px) */
     private int paintProgressWidthPx;
@@ -95,7 +96,7 @@ public class CircleNumberProgress extends View {
         paintDone.setStyle(Paint.Style.STROKE);
 
         // 文字的画笔的属性
-        paintText.setColor(paintTextColor);
+        paintText.setColor(Color.BLACK);
         paintText.setTextSize(paintTextSizePx);
         paintText.setAntiAlias(true);
         paintText.setStyle(Paint.Style.STROKE);
@@ -164,7 +165,7 @@ public class CircleNumberProgress extends View {
         canvas.drawArc(rectF, 0, 360, false, paintUndone);
 
         // 画已经完成进度的圆弧 从-90度开始，即从圆环顶部开始
-        canvas.drawArc(rectF, -90, progress / 100.0f * 360, false, paintDone);
+        canvas.drawArc(rectF, -90, progress / 100.0f * 360000, false, paintDone);
 
         // 为文字所在路径添加一段圆弧轨迹，进度为0%-9%时应该最短，进度为10%-99%时应该边长，进度为100%时应该最长
         // 这样才能保证文字和圆弧的进度一致，不会出现超前或者滞后的情况

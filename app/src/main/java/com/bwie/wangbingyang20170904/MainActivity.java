@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 handler.sendEmptyMessageDelayed(WHAT_INCREASE, getRadomNumber(50, 1500));
             }
             if (nub == 3) {//nub==3 加速
-                handler.sendEmptyMessageDelayed(WHAT_INCREASE, getRadomNumber(50, 30));
+                handler.sendEmptyMessageDelayed(WHAT_INCREASE, getRadomNumber(50, 10));
             }
             if (progress >= 100) {
                 handler.removeMessages(WHAT_INCREASE);
